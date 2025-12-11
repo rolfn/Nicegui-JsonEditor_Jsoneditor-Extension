@@ -1,6 +1,6 @@
 # NiceJEJE, a Json-Editor Renderer for NiceGUI
 
-This project integrates `[json-editor/json-editor](https://github.com/json-editor/json-editor)`, a JSON Schema Based Editor, to render schemas as input and labels in NiceGUI. 
+This project integrates [json-editor/json-editor](https://github.com/json-editor/json-editor), a JSON Schema Based Editor, to render schemas as input and labels in NiceGUI. 
 It provides mappings for various events within NiceGUI environment.
 
 ## Event Mappings

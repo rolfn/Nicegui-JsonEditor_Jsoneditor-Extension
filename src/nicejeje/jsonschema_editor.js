@@ -1,21 +1,27 @@
+import { loadResource } from "../../static/utils/resources.js";
+
 export default {
-  template: `
-    <div></div>
-    `,
+  template: "<div></div>",
+  props: {
+    settings: Object,
+    schema: Object,
+    resource_path: String,
+  },
   data() {
     return {
       editor: null,
       schema: null,
     };
   },
-  mounted() {
+  async mounted() {
+    await this.$nextTick(); // NOTE: wait for window.path_prefix to be set
+    await loadResource(window.path_prefix + `${this.resource_path}/jsoneditor.min.js`);
     this.initializeEditor();
   },
   methods: {
     initializeEditor() {
       const container = this.$el;
       const settings = JSON.parse(JSON.stringify(this.settings));
-
       this.editor = new JSONEditor(container, settings);
       
       this.editor.on("change", () => {
@@ -41,9 +47,6 @@ export default {
       this.editor.on("deleteAllRows", (deletedValues) => {
         this.$emit("deleteAllRows", deletedValues);
       });
-
-
-
     },
     
     run_update_settings(settings) {
@@ -60,10 +63,5 @@ export default {
     },    
     reset() {
     },
-
-  },
-  props: {
-    settings: Object,
-    schema: Object,
   },
 };

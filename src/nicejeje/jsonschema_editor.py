@@ -4,10 +4,7 @@ from typing import Optional, Callable, Any
 from nicegui.events import GenericEventArguments, JsonEditorChangeEventArguments, handle_event
 from typing_extensions import Self
 
-lib_abs_path = Path(__file__).parent / "lib/jsoneditor.js"
-
-
-class JsonSchemaEditor(Element, component="jsonschema_editor.js", libraries=[lib_abs_path]):
+class JsonSchemaEditor(Element, component="jsonschema_editor.js"):
 
     def __init__(self, settings,
                  on_change: Optional[Callable] = None,
@@ -18,11 +15,9 @@ class JsonSchemaEditor(Element, component="jsonschema_editor.js", libraries=[lib
                  on_delete_all_rows: Optional[Callable] = None,
                  ) -> None:
         super().__init__()
+        self.add_resource(Path(__file__).parent / 'lib')
         self.settings = settings
         self._props['settings'] = self.settings
-
-        if on_change:
-            self.on_change(on_change)
 
         if on_change:
             self.on_change(on_change)
