@@ -18,16 +18,17 @@ It provides mappings for various events within NiceGUI environment.
 To use this project, follow the steps below:
 
 1. Import nicejeje JsonSchemaEditor
-   ```python
-   from nicejeje.jsonschema_editor import JsonSchemaEditor
-  ```
 
-2. Import additional required libraries such as Bootstrap, FontAwesome etc..
+    ```python
+    from nicejeje.jsonschema_editor import JsonSchemaEditor
+    ```
 
-3. Define your JSON schema and settings.
+1. Import additional required libraries such as Bootstrap, FontAwesome etc..
 
-   ```python
-   schema = {
+1. Define your JSON schema and settings.
+
+    ```python
+    schema = {
        "type": "object",
        "properties": {
            "possible_colors": {
@@ -40,20 +41,20 @@ To use this project, follow the steps below:
                "type": "string"
            }
        }
-   }
+    }
 
-   settings = {
+    settings = {
        "iconlib": "fontawesome5",
        "object_layout": "normal",
        "show_errors": "interaction",
        "theme": "bootstrap5",
        "schema": schema
-   }
-   ```
+    }
+    ```
 
-4. Use `JsonSchemaEditor` within a NiceGUI context with event mappings.
+1. Use `JsonSchemaEditor` within a NiceGUI context with event mappings.
 
-   ```python
+    ```python
         JsonSchemaEditor(
            settings,
            on_add=lambda e: ui.notify(f'added: {e}'),
@@ -62,14 +63,13 @@ To use this project, follow the steps below:
            on_delete_all_rows=lambda e: ui.notify(f'all: {e}'),
            on_change=lambda e: ui.notify(f'Change: {e}'),
        )
-   ```
+    ```
 
-5. Run the NiceGUI application.
+1. Run the NiceGUI application.
 
-   ```python
-   ui.run()
-   ```
-
-
+    ```python
+    ui.run()
+    ```
+    
 You can find a practical example in `main.py`
 
